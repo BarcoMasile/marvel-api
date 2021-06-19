@@ -1,4 +1,4 @@
-package xyz.marcobasile.marvel.config;
+package xyz.marcobasile.marvel.client.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

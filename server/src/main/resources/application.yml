@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://accessosicuro-trial.rete.toscana.it/auth/realms/arpa/protocol/openid-connect/certs
+
+marvel:
+  base-url: http://gateway.marvel.com/v1/public
+#  api-key: abcd
+#  api-secret: abcd

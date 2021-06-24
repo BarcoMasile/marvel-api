@@ -5,12 +5,12 @@
     <parent>
         <groupId>xyz.marcobasile</groupId>
         <artifactId>marvel-shared</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
     <artifactId>marvel-dto</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <properties>
     </properties>

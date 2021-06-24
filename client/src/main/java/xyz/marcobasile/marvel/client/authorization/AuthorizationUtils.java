@@ -7,6 +7,9 @@ import lombok.experimental.UtilityClass;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
 
 @UtilityClass
 public class AuthorizationUtils {
@@ -18,6 +21,14 @@ public class AuthorizationUtils {
         return DatatypeConverter.printHexBinary(md5.digest()).toLowerCase();
     }
 
+    public Map<String, Collection<String>> requestAuthorizationQuerymap(AuthorizationParameters authParams) {
+        return Map.of(
+                "ts", Collections.singleton(authParams.getTs()),
+                "apikey", Collections.singleton(authParams.getApikey()),
+                "hash", Collections.singleton(AuthorizationUtils.apiKeyDigest(authParams))
+        );
+    }
+
     public String apiKeyDigest(AuthorizationParameters parameters) {
         MessageDigest md5 = parameters.getMd5();
         md5.update(parameters.getHashParams().getBytes());
@@ -25,7 +36,7 @@ public class AuthorizationUtils {
     }
 
     @Getter
-    static class AuthorizationParameters {
+    public static class AuthorizationParameters {
         private final String ts;
         private final String apikey;
         private final String apisecret;

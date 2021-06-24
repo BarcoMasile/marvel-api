@@ -5,13 +5,12 @@
     <parent>
         <groupId>xyz.marcobasile</groupId>
         <artifactId>marvel</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>marvel-client</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <version>0.0.1</version>
 
     <properties>
     </properties>
@@ -51,6 +50,16 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>xyz.marcobasile</groupId>
+            <artifactId>marvel-dto</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

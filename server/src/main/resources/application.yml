@@ -12,3 +12,14 @@ marvel:
   base-url: http://gateway.marvel.com/v1/public
 #  api-key: abcd
 #  api-secret: abcd
+
+
+feign:
+  okhttp:
+    enabled: true
+  compression:
+    request:
+      mime-types: application/json
+    response:
+      useGzipDecoder: true
+      enabled: true

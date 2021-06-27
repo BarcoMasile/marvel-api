@@ -13,7 +13,7 @@ import static xyz.marcobasile.marvel.client.config.MarvelAPIConstants.Comics.*;
 public interface MarvelComics {
 
     @GetMapping(value = PATH + "?limit={limit}&offset={offset}")
-    ResponseWrapper<Comic> getComics(Long offset, Long limit);
+    ResponseWrapper<Comic> getComics(@PathVariable("offset") Long offset, @PathVariable("limit") Long limit);
 
     default ResponseWrapper<Comic> getComics() {
         return getComics(0L, 50L);

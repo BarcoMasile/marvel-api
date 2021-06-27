@@ -13,7 +13,7 @@ import static xyz.marcobasile.marvel.client.config.MarvelAPIConstants.Stories.*;
 public interface MarvelStories {
 
     @GetMapping(value = PATH + "?limit={limit}&offset={offset}")
-    ResponseWrapper<Story> getStories(Long offset, Long limit);
+    ResponseWrapper<Story> getStories(@PathVariable("offset") Long offset, @PathVariable("limit") Long limit);
 
     default ResponseWrapper<Story> getStories() {
         return getStories(0L, 50L);

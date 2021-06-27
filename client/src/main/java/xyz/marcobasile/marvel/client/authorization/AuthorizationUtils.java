@@ -1,14 +1,15 @@
 package xyz.marcobasile.marvel.client.authorization;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 @UtilityClass
@@ -22,11 +23,10 @@ public class AuthorizationUtils {
     }
 
     public Map<String, Collection<String>> requestAuthorizationQuerymap(AuthorizationParameters authParams) {
-        return Map.of(
+        return new HashMap<>(Map.of(
                 "ts", Collections.singleton(authParams.getTs()),
                 "apikey", Collections.singleton(authParams.getApikey()),
-                "hash", Collections.singleton(AuthorizationUtils.apiKeyDigest(authParams))
-        );
+                "hash", Collections.singleton(AuthorizationUtils.apiKeyDigest(authParams))));
     }
 
     public String apiKeyDigest(AuthorizationParameters parameters) {
@@ -35,8 +35,10 @@ public class AuthorizationUtils {
         return DatatypeConverter.printHexBinary(md5.digest()).toLowerCase();
     }
 
+    @Slf4j
     @Getter
     public static class AuthorizationParameters {
+        private static long lastTime = -1;
         private final String ts;
         private final String apikey;
         private final String apisecret;
@@ -49,14 +51,16 @@ public class AuthorizationUtils {
 
         @SneakyThrows
         public AuthorizationParameters(String apiKey, String apiSecret) {
-            ts = String.format("%d", System.nanoTime());
+            final long t = System.nanoTime();
+            ts = String.format("%d", lastTime == -1 ? 0 : t - lastTime);
+            lastTime = t;
             apikey = apiKey;
             apisecret = apiSecret;
             md5 = MessageDigest.getInstance("MD5");
         }
 
         public String getHashParams() {
-            return String.format("%d%s%s",System.nanoTime(), apisecret, apikey);
+            return String.format("%s%s%s", ts, apisecret, apikey);
         }
     }
 }

@@ -21,8 +21,8 @@ public class MarvelAuthInterceptor implements RequestInterceptor {
 
     @Override
     public void apply(RequestTemplate template) {
-        Map<String, Collection<String>> queries = template.queries();
-        queries.putAll(AuthorizationUtils.requestAuthorizationQuerymap(authParams()));
+        Map<String, Collection<String>> queries = AuthorizationUtils.requestAuthorizationQuerymap(authParams());//template.queries();
+        queries.putAll(template.queries());
         template.queries(queries);
     }
 

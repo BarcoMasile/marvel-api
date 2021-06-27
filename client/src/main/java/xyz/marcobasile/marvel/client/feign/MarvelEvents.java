@@ -13,7 +13,7 @@ import static xyz.marcobasile.marvel.client.config.MarvelAPIConstants.Events.*;
 public interface MarvelEvents {
 
     @GetMapping(value = PATH + "?limit={limit}&offset={offset}")
-    ResponseWrapper<Event> getEvents(Long offset, Long limit);
+    ResponseWrapper<Event> getEvents(@PathVariable("offset") Long offset, @PathVariable("limit") Long limit);
 
     default ResponseWrapper<Event> getEvents() {
         return getEvents(0L, 50L);

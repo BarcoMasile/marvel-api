@@ -7,11 +7,14 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: https://accessosicuro-trial.rete.toscana.it/auth/realms/arpa/protocol/openid-connect/certs
+  flyway:
+    enabled: false
 
 marvel:
   base-url: http://gateway.marvel.com/v1/public
 #  api-key: abcd
 #  api-secret: abcd
+
 
 
 feign:

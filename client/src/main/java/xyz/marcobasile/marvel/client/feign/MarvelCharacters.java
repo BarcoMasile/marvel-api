@@ -3,19 +3,17 @@ package xyz.marcobasile.marvel.client.feign;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import xyz.marcobasile.marvel.client.config.MarvelAPIConstants;
 import xyz.marcobasile.marvel.dto.entity.Character;
 import xyz.marcobasile.marvel.dto.entity.*;
 import xyz.marcobasile.marvel.dto.response.ResponseWrapper;
 
 import static xyz.marcobasile.marvel.client.config.MarvelAPIConstants.Characters.*;
-import static xyz.marcobasile.marvel.client.config.MarvelAPIConstants.Stories.PATH;
 
 @FeignClient(name = "charactersClient", url = "${marvel.base-url}")
 public interface MarvelCharacters {
 
     @GetMapping(value = PATH + "?limit={limit}&offset={offset}")
-    ResponseWrapper<Character> getCharacters(Long offset, Long limit);
+    ResponseWrapper<Character> getCharacters(@PathVariable("offset") Long offset, @PathVariable("limit") Long limit);
 
     default ResponseWrapper<Character> getCharacters() {
         return getCharacters(0L, 50L);

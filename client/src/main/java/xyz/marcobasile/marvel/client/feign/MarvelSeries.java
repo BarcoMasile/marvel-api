@@ -13,7 +13,7 @@ import static xyz.marcobasile.marvel.client.config.MarvelAPIConstants.Series.*;
 public interface MarvelSeries {
 
     @GetMapping(value = PATH + "?limit={limit}&offset={offset}")
-    ResponseWrapper<Series> getSeries(Long offset, Long limit);
+    ResponseWrapper<Series> getSeries(@PathVariable("offset") Long offset, @PathVariable("limit") Long limit);
 
     default ResponseWrapper<Series> getSeries() {
         return getSeries(0L, 50L);

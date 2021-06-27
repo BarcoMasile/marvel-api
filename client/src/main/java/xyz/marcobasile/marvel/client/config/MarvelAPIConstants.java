@@ -4,7 +4,7 @@ public class MarvelAPIConstants {
 
     public static class Characters {
         public static final String PATH = "/characters";
-        public static final String PATTERN = "{characterId}";
+        public static final String PATTERN = "characterId";
         public static final String GET_ONE = "/characters/{characterId}";
         public static final String GET_ONE_COMICS = "/characters/{characterId}/comics";
         public static final String GET_ONE_EVENTS = "/characters/{characterId}/events";
@@ -14,7 +14,7 @@ public class MarvelAPIConstants {
 
     public static class Comics {
         public static final String PATH = "/comics";
-        public static final String PATTERN = "{comicId}";
+        public static final String PATTERN = "comicId";
         public static final String GET_ONE = "/comics/{comicId}";
         public static final String GET_ONE_CHARACTERS = "/comics/{comicId}/characters";
         public static final String GET_ONE_CREATORS = "/comics/{comicId}/creators";
@@ -24,7 +24,7 @@ public class MarvelAPIConstants {
 
     public static class Creators {
         public static final String PATH = "/creators";
-        public static final String PATTERN = "{creatorId}";
+        public static final String PATTERN = "creatorId";
         public static final String GET_ONE = "/creators/{creatorId}";
         public static final String GET_ONE_COMICS = "/creators/{creatorId}/comics";
         public static final String GET_ONE_EVENTS = "/creators/{creatorId}/events";
@@ -34,7 +34,7 @@ public class MarvelAPIConstants {
     public static class Events {
 
         public static final String PATH = "/events";
-        public static final String PATTERN = "{eventId}";
+        public static final String PATTERN = "eventId";
         public static final String GET_ONE = "/events/{eventId}";
         public static final String GET_ONE_COMICS = "/events/{eventId}/comics";
         public static final String GET_ONE_CHARACTERS = "/events/{eventId}/characters";
@@ -45,7 +45,7 @@ public class MarvelAPIConstants {
 
     public static class Series {
         public static final String PATH = "/series";
-        public static final String PATTERN = "{seriesId}";
+        public static final String PATTERN = "seriesId";
         public static final String GET_ONE = "/series/{seriesId}";
         public static final String GET_ONE_CHARACTERS = "/series/{seriesId}/characters";
         public static final String GET_ONE_COMICS = "/series/{seriesId}/comics";
@@ -56,7 +56,7 @@ public class MarvelAPIConstants {
 
     public static class Stories {
         public static final String PATH = "/stories";
-        public static final String PATTERN = "{storyId}";
+        public static final String PATTERN = "storyId";
         public static final String GET_ONE = "/stories/{storyId}";
         public static final String GET_ONE_CHARACTERS = "/stories/{storyId}/characters";
         public static final String GET_ONE_COMICS = "/stories/{storyId}/comics";

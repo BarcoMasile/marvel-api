@@ -1,9 +1,12 @@
 package xyz.marcobasile.marvel.dto.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import xyz.marcobasile.marvel.dto.internal.*;
+import xyz.marcobasile.marvel.dto.jackson.deserializer.ZonedDateTimeDeserializer;
 
 import java.time.Instant;
+import java.time.ZonedDateTime;
 import java.util.Collection;
 
 /**
@@ -48,7 +51,8 @@ public class Comic {
     /**
      * The date the resource was most recently modified.
      */
-    private Instant modified;
+    @JsonDeserialize(using = ZonedDateTimeDeserializer.class, as = ZonedDateTime.class)
+    private ZonedDateTime modified;
 
     /**
      * The ISBN for the comic (generally only populated for collection formats).

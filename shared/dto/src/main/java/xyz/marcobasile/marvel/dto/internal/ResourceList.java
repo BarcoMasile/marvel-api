@@ -25,6 +25,6 @@ public class ResourceList<T> {
     /**
      * A list of summary views of the items in this resource list.
      */
-    private Collection<MarvelEntityList<T>> items;
+    private Collection<MarvelEntitySummary<T>> items;
 
 }

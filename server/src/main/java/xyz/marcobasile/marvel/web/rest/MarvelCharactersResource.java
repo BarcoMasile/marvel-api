@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.marcobasile.marvel.client.feign.MarvelCharacters;
 import xyz.marcobasile.marvel.dto.entity.Character;
+import xyz.marcobasile.marvel.dto.response.ResponseWrapper;
 
 import java.util.Collection;
 
@@ -21,8 +22,8 @@ public class MarvelCharactersResource {
 
     @GetMapping
     public ResponseEntity<Collection<Character>> get() {
-        return ResponseEntity.ok(charactersClient.getCharacters().getData().getResults());
+        ResponseWrapper<Character> results = charactersClient.getCharacters();
+        return ResponseEntity.ok(results.getData().getResults());
     }
-
 }
 

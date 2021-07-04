@@ -13,9 +13,9 @@ import static xyz.marcobasile.marvel.client.config.MarvelAPIConstants.Creators.*
 public interface MarvelCreators {
 
     @GetMapping(value = PATH + "?limit={limit}&offset={offset}")
-    ResponseWrapper<Comic> getCreators(@PathVariable("offset") Long offset, @PathVariable("limit") Long limit);
+    ResponseWrapper<Creator> getCreators(@PathVariable("offset") Long offset, @PathVariable("limit") Long limit);
 
-    default ResponseWrapper<Comic> getCreators() {
+    default ResponseWrapper<Creator> getCreators() {
         return getCreators(0L, 50L);
     }
 
@@ -23,7 +23,7 @@ public interface MarvelCreators {
     ResponseWrapper<Character> getCreatorsById(@PathVariable(PATTERN) Long creatorId);
 
     @GetMapping(value = GET_ONE_COMICS)
-    ResponseWrapper<Creator> getCreatorsCharacters(@PathVariable(PATTERN) Long creatorId);
+    ResponseWrapper<Character> getCreatorsCharacters(@PathVariable(PATTERN) Long creatorId);
 
     @GetMapping(value = GET_ONE_EVENTS)
     ResponseWrapper<Event> getCreatorsEvents(@PathVariable(PATTERN) Long creatorId);
